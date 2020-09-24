@@ -26,7 +26,7 @@ namespace HotelFPW.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocaldb;Database=FPWHotel;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocaldb;Database=HotelFPW;Trusted_Connection=true");
 
         }
 

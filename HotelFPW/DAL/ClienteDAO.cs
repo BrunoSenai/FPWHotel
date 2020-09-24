@@ -35,16 +35,24 @@ namespace HotelFPW.DAL
 
         public static List<Cliente> BuscarPorNome(string nome) => _context.Clientes.Where(x => x.NomeCliente.Contains(nome)).ToList();
 
-        public static void Editar(Cliente c)
+        public static bool Editar(Cliente c)
         {
             try
             {
-                _context.Clientes.Update(c);
-                _context.SaveChanges();
+                if (ValidacaoCPF.ValidarCpf(c.Cpf))
+                {
+                    _context.Clientes.Update(c);
+                    _context.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch (Exception)
             {
-
+                return false;
                 throw new Exception("Erro ao editar");
             }
         }
